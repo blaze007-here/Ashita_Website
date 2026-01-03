@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Digital Art Gallery</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #ff9f43;
+            padding-bottom: 10px;
+        }
+
+        .gallery-container {
+            display: grid;
+            /* This ensures images sit side-by-side */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .image-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .image-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .image-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .image-info {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .image-info p {
+            margin: 0;
+            font-weight: bold;
+            color: #555;
+        }
+
+        /* Lightbox styles */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9);
+            justify-content: center;
+            align-items: center;
+        }
+        #lightbox img { max-width: 90%; max-height: 80%; border: 3px solid white; }
+    </style>
+</head>
+<body>
+    
+    <h1>Ashita's Art Showcase🎨</h1>
+    
+    <div class="gallery-container">
+        <div class="image-card">
+            <img src="20260104_004313_0000.png" alt="Yellow Pattern">
+            <div class="image-info"><p>Floral Composition I</p></div>
+        </div>
+        <div class="image-card">
+            <img src="IMG-20260104-WA0002.jpg" alt="Orange Flowers Butterfly">
+            <div class="image-info"><p>Floral Composition II</p></div>
+        </div>
+        <div class="image-card">
+            <img src="20260104_004340_0000.png" alt="Orange Pattern">
+            <div class="image-info"><p>Floral Composition III</p></div>
+        </div>
+        <div class="image-card">
+            <img src="IMG-20260104-WA0001.jpg" alt="Abstract Circles">
+            <div class="image-info"><p>Abstarct</p></div>
+        </div>
+
+<!--    
+        <div class="image-card">
+            <img src="IMG-20260104-WA0000.jpg" alt="Orange Flowers Butterfly">
+            <div class="image-info"><p>Yellow Botanical Pattern</p></div>
+        </div> -->
+    </div> <div id="lightbox" onclick="this.style.display='none'">
+        <img id="lightbox-img" src="">
+    </div>
+
+    <script>
+        // Simple JS to view images full screen
+        const cards = document.querySelectorAll('.image-card img');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+
+        cards.forEach(img => {
+            img.addEventListener('click', () => {
+                lightbox.style.display = 'flex';
+                lightboxImg.src = img.src;
+            });
+        });
+    </script>
+
+</body>
+</html>
